@@ -7,9 +7,6 @@ use r2d2::PooledConnection;
 
 use crate::models::reservation::{NewReservation, NewReservationWithTableId, Reservation, UpdateReservation};
 
-/*
-POST /reservations: Créer une nouvelle réservation. ATTENTION, vous devrez mettre en place une logique métier qui va tenter d’optimiser le placement (rechercher un table disponible et si possible de la taille demandée pour remplir au maximum le restaurant).
-*/
 pub async fn create_reservation(
     conn: &mut PooledConnection<ConnectionManager<PgConnection>>,
     restaurant_id: i32,
