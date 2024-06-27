@@ -32,6 +32,7 @@ pub async fn create_reservation(
         // Order the tables by seating capacity
         .order_by(crate::schema::tables::seating_capacity.asc())
         .select(crate::models::table::Table::as_select())
+        // Select the first table to ensure that the table has the closest size to the new reservation size
         .first::<crate::models::table::Table>(conn);
 
     match table {
